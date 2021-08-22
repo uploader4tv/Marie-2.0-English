@@ -27,7 +27,7 @@ CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
 # Not async
 def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = None) -> str:
     if is_user_admin(chat, user.id):
-        message.reply_text("Damn admins, can't even be warned!")
+        message.reply_text("Let's warn another admin, how smart")
         return ""
 
     if warner:
@@ -45,7 +45,7 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
 
         else:  # ban
             chat.kick_member(user.id)
-            reply = "{} warnings, {} has been banned!".format(limit, mention_html(user.id, user.first_name))
+            reply = "{} warnings, {} has been sent to tele-prison".format(limit, mention_html(user.id, user.first_name))
 
         for warn_reason in reasons:
             reply += "\n - {}".format(html.escape(warn_reason))
@@ -53,7 +53,7 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
         message.bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         keyboard = []
         log_reason = "<b>{}:</b>" \
-                     "\n#WARN_BAN" \
+                     "\nApparently, warning-ban or somethin" \
                      "\n<b>Admin:</b> {}" \
                      "\n<b>User:</b> {}" \
                      "\n<b>Reason:</b> {}"\
@@ -72,7 +72,7 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
             reply += "\nReason for last warn:\n{}".format(html.escape(reason))
 
         log_reason = "<b>{}:</b>" \
-                     "\n#WARN" \
+                     "\n#Warning ;-;" \
                      "\n<b>Admin:</b> {}" \
                      "\n<b>User:</b> {}" \
                      "\n<b>Reason:</b> {}"\
@@ -110,7 +110,7 @@ def button(bot: Bot, update: Update) -> str:
                 parse_mode=ParseMode.HTML)
             user_member = chat.get_member(user_id)
             return "<b>{}:</b>" \
-                   "\n#UNWARN" \
+                   "\nWarning Removed by some pussy moderator" \
                    "\n<b>Admin:</b> {}" \
                    "\n<b>User:</b> {}".format(html.escape(chat.title),
                                               mention_html(user.id, user.first_name),
