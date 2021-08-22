@@ -33,11 +33,11 @@ def promote(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_member = chat.get_member(user_id)
     if user_member.status == 'administrator' or user_member.status == 'creator':
-        message.reply_text("How am I meant to promote someone that's already an admin?")
+        message.reply_text("yo bitch he is already an admin?")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I can't promote myself! Get an admin to do it for me.")
+        message.reply_text("If I could promote myself, I'd have deleted this group.")
         return ""
 
     # set same perms as bot - bot can't assign higher perms than itself!
@@ -74,20 +74,20 @@ def demote(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text("mension one.... 🤷🏻‍♂.")
+        message.reply_text("ah list some")
         return ""
 
     user_member = chat.get_member(user_id)
     if user_member.status == 'creator':
-        message.reply_text("i cant ban creator of the group.... 😬")
+        message.reply_text("why tf do you think the ban command would work on uploader? stupid shit fr")
         return ""
 
     if not user_member.status == 'administrator':
-        message.reply_text("Can't demote what wasn't promoted!")
+        message.reply_text("how do I demote someone that's already a peasant member")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I can't demote myself! Get an admin to do it for me.")
+        message.reply_text("fuckyou, don't demote me")
         return ""
 
     try:
@@ -109,8 +109,7 @@ def demote(bot: Bot, update: Update, args: List[str]) -> str:
                                           mention_html(user_member.user.id, user_member.user.first_name))
 
     except BadRequest:
-        message.reply_text("Could not demote. I might not be admin, or the admin status was appointed by another "
-                           "user, so I can't act upon them!")
+        message.reply_text("Member not demoted. Reason : Some error by you bitch, who made you an admin?")
         return ""
 
 
@@ -182,9 +181,9 @@ def invite(bot: Bot, update: Update):
             invitelink = bot.exportChatInviteLink(chat.id)
             update.effective_message.reply_text(invitelink)
         else:
-            update.effective_message.reply_text("I don't have access to the invite link, try changing my permissions!")
+            update.effective_message.reply_text("Promote me daddy, can't access invite link settings")
     else:
-        update.effective_message.reply_text("I can only give you invite links for supergroups and channels, sorry!")
+        update.effective_message.reply_text("Your group too small to have an invite link!")
 
 
 @run_async
