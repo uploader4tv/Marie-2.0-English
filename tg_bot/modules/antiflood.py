@@ -35,7 +35,7 @@ def check_flood(bot: Bot, update: Update) -> str:
 
     try:
         chat.kick_member(user.id)
-        msg.reply_text("dont disturb others you are No need for this group anymore...")
+        msg.reply_text("Flooding is a sin. Punishment : 20 Hail Marys")
 
         return "<b>{}:</b>" \
                "\n#BANNED" \
@@ -44,11 +44,11 @@ def check_flood(bot: Bot, update: Update) -> str:
                                              mention_html(user.id, user.first_name))
 
     except BadRequest:
-        msg.reply_text("You cannot use this service as long as you do not give me Permissions.")
+        msg.reply_text("Activate my full power boi.")
         sql.set_flood(chat.id, 0)
         return "<b>{}:</b>" \
                "\n#INFO" \
-               "\nDon't have kick permissions, so automatically disabled antiflood.".format(chat.title)
+               "\nPermissions gone fam, how will I control flood??".format(chat.title)
 
 
 @run_async
@@ -64,13 +64,13 @@ def set_flood(bot: Bot, update: Update, args: List[str]) -> str:
         val = args[0].lower()
         if val == "off" or val == "no" or val == "0":
             sql.set_flood(chat.id, 0)
-            message.reply_text("I will no longer dismiss those who flood.")
+            message.reply_text("flooding is no longer a sin ;-;")
 
         elif val.isdigit():
             amount = int(val)
             if amount <= 0:
                 sql.set_flood(chat.id, 0)
-                message.reply_text("I will no longer dismiss those who flood.")
+                message.reply_text("spam the group, moderators don't care apparently")
                 return "<b>{}:</b>" \
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
