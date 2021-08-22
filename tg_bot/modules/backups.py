@@ -47,10 +47,7 @@ def import_data(bot: Bot, update):
             for mod in DATA_IMPORT:
                 mod.__import_data__(str(chat.id), data)
         except Exception:
-            msg.reply_text("An exception occured while restoring your data. The process may not be complete. If "
-                           "you're having issues with this, message @MarieSupport with your backup file so the "
-                           "issue can be debugged. My owners would be happy to help, and every bug "
-                           "reported makes me better! Thanks! :)")
+            msg.reply_text("An exception occured while restoring your data. The process may not be complete. Some bug  perhaps")
             LOGGER.exception("Import for chatid %s with name %s failed.", str(chat.id), str(chat.title))
             return
 
@@ -70,7 +67,7 @@ __mod_name__ = "Backups"
 
 __help__ = """
 *Admin only:*
- - /import: reply to a group butler backup file to import as much as possible, making the transfer super simple! Note \
+ - /import: reply to a group backup file to import as much as possible, making the transfer super simple! Note \
 that files/photos can't be imported due to telegram restrictions.
  - /export: !!! This isn't a command yet, but should be coming soon!
 """
