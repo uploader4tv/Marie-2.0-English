@@ -91,7 +91,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
         chat.kick_member(user_id)
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         keyboard = []
-        reply = "{} has been banned. If anyone else wants to get banned, let me know".format(mention_html(member.user.id, member.user.first_name))
+        reply = "{} has been fucking deported.".format(mention_html(member.user.id, member.user.first_name))
         message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
         return log
 
@@ -353,7 +353,7 @@ def rban(bot: Bot, update: Update, args: List[str]):
         return
 
     if user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?")
+        message.reply_text("I'm not gonna BAN myself, are you dumb bitch?")
         return
 
     try:
