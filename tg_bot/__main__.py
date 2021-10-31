@@ -30,7 +30,7 @@ HELP_STRINGS = """
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
 
-DONATE_STRING = """Really? You pressed the donate button, nice (must have pressed it by mistake
+DONATE_STRING = """Really? You pressed the donate button, nice (must have pressed it by mistake)
 If you want to donate, make an amazon gift card of any amount and send the link to @uploader4
 Or paytm the amount to +91-8248897579. No other options are available unfortunately, Bye."""
 
