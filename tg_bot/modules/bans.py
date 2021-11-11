@@ -90,8 +90,6 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
     reply = ""
     try:
         chat.kick_member(user_id)
-        bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
-        log += "Sticker sent"
         #keyboard = []
         reply = "{} has been fucking deported.".format(mention_html(member.user.id, member.user.first_name))
         #message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
