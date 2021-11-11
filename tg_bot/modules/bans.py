@@ -87,26 +87,31 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
     if reason:
         log += "\n<b>Reason:</b> {}".format(reason)
 
+    reply = ""
     try:
         chat.kick_member(user_id)
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
-        keyboard = []
+        log += "Sticker sent"
+        #keyboard = []
         reply = "{} has been fucking deported.".format(mention_html(member.user.id, member.user.first_name))
-        message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
-        return log
+        #message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
+        #return log
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Banned!', quote=False)
-            return log
+            #message.reply_text('Banned!', quote=False)
+            reply = "Banned!"
+            #return log
         else:
             LOGGER.warning(update)
             LOGGER.exception("Couldn't ban this mf - %s in chat %s (%s) due to %s", user_id, chat.title, chat.id,
                              excp.message)
-            message.reply_text("Fuck I can't ban him. Wish I was the real uploader.")
+            #message.reply_text("Fuck I can't ban him. Wish I was the real uploader.")
+            reply = "Exception! :// /nFuck I can't ban him. Wish I was the real uploader."
 
-    return ""
+    message.reply_text(reply, parse_mode=ParseMode.HTML)
+    return log
 
 
 @run_async
